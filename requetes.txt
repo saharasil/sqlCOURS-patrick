@@ -1,0 +1,33 @@
+******** Exercice **********
+
+CREATE TABLE t_utilisateurs
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    email VARCHAR(255),
+    date_naissance DATE,
+    pays VARCHAR(255),
+    ville VARCHAR(255),
+    code_postal VARCHAR(5),
+    nombre_achat INT
+)
+
+!!!!!! t_utilisateur / user / usres / t_user/ tusers : les nom qu'on peut affronter comme nom de base de donné
+!!!!!! j'ai 9 colonnes dans ma base chaque début de phrase donne le nom de la colonne : exp : 1 - nom, 2- prenom , 3- email ......
+
+!!!!! les types de données :
+!!!!!! INT = integer = un nombre entier
+!!!!!! VARCHAR = chaine de caractère dont le nombre de caractère est limité exp :  VARCHAR(5) = 5 nombre de caractères
+!!!!!!! DATE 
+!!!!!!! TEXT
+
+
+INSERT INTO t_utilisateurs (id, nom, prenom, email, date_naissance, pays, ville, code_postal, nombre_achat) VALUES (NULL, 'Ferchichi', 'Sahar', 'sahar.ferchichi@lepoles.com', '1989-05-16', 'France', 'Paris','93140', NULL);
+
+SELECT * FROM t_utilisateurs ORDER BY nom ASC 
+SELECT nom, prenom FROM t_utilisateurs
+SELECT * FROM t_utilisateurs WHERE ville ='paris'
+
+!!! supprimer un enregistrement
+DELETE FROM t_utilisateurs WHERE nom=''
