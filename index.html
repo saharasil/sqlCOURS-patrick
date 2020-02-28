@@ -111,6 +111,7 @@
                         <li>Afficher le contenu d'une table <code>SELECT * FROM t_utilisateurs</code> </li>
                         <li>Effacer un enregistrement : <code>DELETE FROM t_utulisateurs WHERE nom=''</code></li>
                         <li>Observer la structure d'une table : la description de la table <code>DESC t_utilisateurs</code> </li>
+                        <li>Renomer la BDD > à faire dans PHP MyAdmin > ONglet opération ; la requête efface et crere une nouvelle avec le nouveau nom</li>
                     </ul>
                     <p><a class="btn btn-secondary " href="#suite" role="button" target="_blank">Autres requêtes &raquo;</a></p>
                     <hr>
@@ -154,7 +155,7 @@
                         <tr>
                           <th scope="row">ENUM</th>
                           <td>Une liste</td>
-                          <td>Pour proposer un eliste de termes ex : "Madame" "Monsieur" </td>
+                          <td>Pour proposer une liste de termes ex : "Madame" "Monsieur" </td>
                          
                         </tr>
                       </tbody>
@@ -221,36 +222,58 @@
                 <h2>Les requêtes (suite)</h2>
                 <ul>
                   <li>Afficher et trier le contenu de la table <code>SELECT * FROM employes ORDER BY nom ASC </code> </li>
+
                   <li>Tri multiple : <code>SELECT service, nom, prenom FROM employes ORDER BY service ASC, nom ASC</code></li>
+
                   <li>Une condition :  WHERE (à condition que) <code>SELECT nom, prenom FROM employes WHERE service="informaique"</code> </li>
+
                   <li>Le mot clef : BETWEEN (entre) <code>SELECT nom, prenom, date_embauche FROM employes WHERE date_embauche BETWEEN '2006-01-01' AND '2010-12-31'</code> </li>
+
                   <li>Une fonction prédéfinies avec ses  parenthèses : CURDATE() (date courante) <code>SELECT nom, prenom, date_embauche FROM employes WHERE date_embauche BETWEEN '2006-01-01' AND CURDATE()</code></li>
+
                   <li>Le mot clef : LIKE <code>SELECT prenom FROM employes WHERE prenom LIKE 's%' : affiche tout les prenoms qui commencent par un s</code> ou <code>SELECT prenom FROM employes WHERE prenom LIKE '%-%' : affiche out les prenoms qui contiennent une " - "</code> </li>
+
                   <li><code>=</code> "est égal"</li>
+
                   <li><code>></code>"strictement supérieur, <code>>=</code> "supèrieur ou égal"</li>
+
                   <li><code>&lt;</code>"strictement inférieur" <code>&lt;=</code>"inférieur ou égal"</li>
+
                   <li><code>&lt;></code>ou <code>!=</code>"est différent" <code>SELECT nom, prenom, service FROM employes WHERE service !='infotmatique'</code></li>
+
                   <li>Limiter les résultats : LIMIT <code>SELECT nom, prenom, service, salaire FROM employes ORDER BY salaire DESC LIMIT 0,3</code><span class="small font-italic">( le 1er chiffre précise l'enregistrement de départ, le 2nd chiffre indique le nombre de résultats)</span></li>
+
                   <li>Faire des calcules <code>SELECT nom, prenom, salaire*12 FROM employes</code></li>
+
                   <li>Le mot clef AS permet de définir un ALIAS : <code> SELECT nom, prenom, salaire*12 AS salaire-annuel FROM employes </code></li>
+
                   <li>Somme d'une colonne avec SUM() : <code>SELECT SUM(salaire*12) FROM employes</code></li>
+
                   <li>Calculer une moyenne avec AVG() : <code>SELECT AVG(salaire) FROM employes</code></li>
+
                   <li>Arrondir un résultat avec ROUND(): <code>SELECT ROUND(AVG(salaire)) FROM employes</code></li>
+
                   <li>Compter avec COUNT(*):  <code>SELECT COUNT(*) FROM employes WHERE sexe='f'; </code> (nombre de femme)</li>
                 </ul>
                 <hr>
                 <h5>Requête imbriquées</h5>
                 <ul>
                   <li>Isoler une valeur minimum/maximum avec MIN() ou  MAX() : <code>SELECT MIN(salaire) FROM employes</code></li>
+
                   <li><code>SELECT  prenom, salaire FROM employes WHERE salaire = (SELECT MIN(salaire) FROM employes)</code></li>
                 </ul>
                 <h5>Conditions miltiples</h5>
                 <ul>
                   <li>Avec plusieurs valeurs avec le mot clef IN : <code>SELECT nom, prenom, service FROM employes WHERE service IN('comptabilité', 'informatique')</code></li>
+
                   <li>Avec le mot clef NOT IN : <code>SELECT nom, prenom, service FROM employes WHERE service NOT IN('comptabilité', 'informatique')</code> <span class="small font-italic">!= permet d'exclure une seule valeur // NOT IN() permet d'exclure plusieurs valeurs </span> </li>
+
                   <li>Plusieurs conditions avec différents champs et différentes valeurs : <code>SELECT nom, prenom, service, salaire FROM employes WHERE service='commercial' AND salire &lt;= 2000 </code></li>
+
                   <li>Ordre de priorité sur les conditions AND et OR : <code>SELECT nom, prenom, service, salaire FROM employes WHERE service='production' AND (salaire= 1900 OR salaire = 2300)</code> <span class="small font-italic">Pour garantir l'ordre naturel de lecture (de la gauche vers la droite), nous utiliserons des parenthèses </span></li>
+
                   <li>Les regroupements avec GROUP BY : <code>SELECT service, COUNT(*) AS nombre FROM employes GROUP BY service;</code></li>
+                  
                   <li>Les regroupements avec une condition HAVING COUNT() <code>SELECT service, COUNT(*) AS nombre FROM employes GROUP BY service HAVING COUNT(*) > 2;</code></li>
                 </ul>
               </div>
