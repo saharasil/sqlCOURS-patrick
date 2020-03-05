@@ -160,8 +160,8 @@ PRIMARY KEY (id_livre)
 
 
 ///// création des clefs etrangéres/////
-ALTER TABLE emprunt ADD FOREIGN KEY ( id_livre ) REFERENCES bibliotheque.livre (id_livre);
-ALTER TABLE emprunt ADD FOREIGN KEY ( id_abonne ) REFERENCES bibliotheque.abonne (id_abonne);
+ALTER TABLE emprunt ADD FOREIGN KEY (id_livre) REFERENCES bibliotheque.livre (id_livre);
+ALTER TABLE emprunt ADD FOREIGN KEY (id_abonne) REFERENCES bibliotheque.abonne (id_abonne);
 
 INSERT INTO abonne (id_abonne, prenom) VALUES
 (1, 'Guillaume'),
