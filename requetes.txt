@@ -251,17 +251,18 @@ SELECT titre FROM livre WHERE id_livre IN (SELECT id_livre FROM emprunt WHERE id
 
 /// Exercice :
 1-Créer une BDD = exo_contacts
-2-Créer une table t_contacts qui contient 11 champs  ou 11 colonnes
+2-Créer une table t_contacts qui contient 13 champs  ou 13 colonnes
                 -id_contact
                 -prenom
                 -nom
+                -age
                 -email
                 -mdp
                 -adresse
                 -code_postal
                 -ville
                 -pays
-                -portable
+                -telephone
                 -notes
 
 
@@ -273,7 +274,7 @@ SELECT titre FROM livre WHERE id_livre IN (SELECT id_livre FROM emprunt WHERE id
 =>
 CREATE DATABASE IF NOT EXISTS exo_contacts ;
 
-CREATE TABLE t_contacts (
+CREATE TABLE IF NOT EXISTS t_contacts (
 id_contact INT(3) NOT NULL AUTO_INCREMENT,
 prenom VARCHAR(25) NOT NULL,
 nom VARCHAR(25) NOT NULL,
@@ -283,23 +284,23 @@ adresse VARCHAR(255) NULL,
 code_postal VARCHAR(10) NULL,
 ville VARCHAR(30) NULL,
 pays VARCHAR(255) DEFAULT NULL,
-portable VARCHAR(255) DEFAULT NULL,
+telephone VARCHAR(255) DEFAULT NULL,
 notes VARCHAR (255)) DEFAULT NULL,
 PRIMARY KEY (id_contact)
 ) ENGINE=InnoDB ;
 
 
-INSERT INTO t_contacts (id_contact, prenom, nom, email, mdp, adresse, code_postal, ville, pays, telephone, notes) VALUES
-(Null, 'Guillaume', 'Doe', 'GuillaumeDoe@hotmail.com)','azerty', '54 rue du soleil', '75015', 'Paris', 'France', '0675859565', 'Acteur français' )
-(NULL, 'Benoit','Leclerc','BenoitLeclerc@hotmail.com','qsdfg', '6 rue de la france', '75012', 'Paris', 'France','0756595857','Il aime les fleurs'),
-(NULL, 'Fathi','Heddaoui','fathiheddaouirc@hotmail.com','wxcvb', '13 rue de scadicci', '93500','Nice', 'France','0769855845','C'est un bon acteur),
-(NULL, 'Dalila','Meftahi','dalilameftahi@hotmail.com','qsdfg', '7 bis rue édouard vaillaint', '93140', 'Paris', 'France','0198745633','Elle est trop expressif'),
-(NULL, 'Lotfi','Abdelli','lotfiabdelli@hotmail.com','bhytrff', '47 rue de general leclerc', '75017', 'Paris', 'France','0789664123','Il est un célébre acteur comédien '),
-(NULL, 'Dorsaf','Mamlouk','dorsafmamlouk@hotmail.com','k555fmy, '14 boulevard voltaire', '75016', 'Paris', 'France','0695881233','elle est trop demandé dans les feuillton'),
-(NULL, 'Naima','Jeni','naimajeni@hotmail.com','lllerrp', '7 avenue hoche', '75018', 'Paris', 'France','06996655448','NULL'),
-(NULL, 'Kaouthar','Bardi','kaoutharbardi@hotmail.com','22nn22nn, 'NULL', 'NULL', 'NULL', 'NULL','07655855466','NULL'),
-(NULL, 'Bassem','Hamraoui','hamraouibassem@hotmail.com','55erty5', 'NULL', 'NULL', 'NULL', 'NULL','0799856641','un trés bon comédien il fait trop rire'),
-(NULL, 'Karim','Gharbi','gharbikarim@hotmail.com','55622145', 'NULL', 'NULL', 'NULL', 'NULL','07655855466','NULL')
+INSERT INTO t_contacts (id_contact, prenom, nom, age, email, mdp, adresse, code_postal, ville, pays, telephone, notes, photo) VALUES
+(Null, 'Guillaume', 'Doe', 25, 'GuillaumeDoe@hotmail.com)','azerty', '54 rue du soleil', '75015', 'Paris', 'France', '0675859565', 'Acteur français', Null)
+(NULL, 'Benoit','Leclerc', 35, 'BenoitLeclerc@hotmail.com','qsdfg', '6 rue de la france', '75012', 'Paris', 'France','0756595857','Il aime les fleurs', Null),
+(NULL, 'Fathi','Heddaoui',75, 'fathiheddaouirc@hotmail.com','wxcvb', '13 rue de scadicci', '93500','Nice', 'France','0769855845','C\'est un bon acteur', Null),
+(NULL, 'Dalila','Meftahi', 65 ,'dalilameftahi@hotmail.com','qsdfg', '7 bis rue édouard vaillaint', '93140', 'Paris', 'France','0198745633','Elle est trop expressif', Null),
+(NULL, 'Lotfi','Abdelli', 40, 'lotfiabdelli@hotmail.com','bhytrff', '47 rue de general leclerc', '75017', 'Paris', 'France','0789664123','Il est un célébre acteur comédien ', Null),
+(NULL, 'Dorsaf','Mamlouk',59,'dorsafmamlouk@hotmail.com','k555fmy, '14 boulevard voltaire', '75016', 'Paris', 'France','0695881233','elle est trop demandé dans les feuillton', Null),
+(NULL, 'Naima','Jeni',61, 'naimajeni@hotmail.com','lllerrp', '7 avenue hoche', '75018', 'Paris', 'France','06996655448','NULL', Null),
+(NULL, 'Kaouthar','Bardi', 45,'kaoutharbardi@hotmail.com','22nn22nn, 'NULL', 'NULL', 'NULL', 'NULL','07655855466','NULL', Null),
+(NULL, 'Bassem','Hamraoui', 31, 'hamraouibassem@hotmail.com','55erty5', 'NULL', 'NULL', 'NULL', 'NULL','0799856641','un trés bon comédien il fait trop rire'),
+(NULL, 'Karim','Gharbi',28 ,'gharbikarim@hotmail.com','55622145', 'NULL', 'NULL', 'NULL', 'NULL','07655855466','NULL', Null)
 
 
 
